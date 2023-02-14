@@ -16,7 +16,11 @@ export function Header() {
   return (
     <>
       <Head>
-        <title>{`${navLinks.find((link) => link.path === router.pathname)?.description} Movies`}</title>
+        <title>
+          {router.pathname === '/'
+            ? 'MovieDB'
+            : `${navLinks.find((link) => link.path === router.pathname)?.description} Movies`}
+        </title>
       </Head>
       <header>
         <Navbar fluid={true} rounded={false}>
