@@ -24,7 +24,14 @@ export function Header() {
       </Head>
       <header>
         <Navbar fluid={true} rounded={false}>
-          <Navbar.Brand>
+          <Navbar.Brand
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              router.push('/');
+              // Using Next.js no-reload link approach instead
+            }}
+          >
             <BsCameraReelsFill className="text-xl text-white mr-2" />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">MovieDB</span>
           </Navbar.Brand>
