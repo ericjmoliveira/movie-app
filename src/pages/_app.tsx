@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { AppProps } from 'next/app';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { Layout } from '@/components/Layout';
 import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient.current}>
       <Hydrate>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Hydrate>
     </QueryClientProvider>
   );
