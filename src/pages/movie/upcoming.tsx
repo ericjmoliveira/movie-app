@@ -23,7 +23,8 @@ export default function Upcoming() {
   const { data, isFetching, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<ResponseData>({
     queryKey: ['upcoming-movies'],
     queryFn: ({ pageParam = 1 }) => getUpcomingMovies(pageParam),
-    getNextPageParam: (lastPage) => (lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined)
+    getNextPageParam: (lastPage) =>
+      lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined
   });
 
   return (
@@ -41,6 +42,7 @@ export default function Upcoming() {
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 width={500}
                 height={700}
+                priority
                 alt={`${movie.title} poster`}
               />
             </Link>

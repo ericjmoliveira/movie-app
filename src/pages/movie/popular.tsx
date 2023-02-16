@@ -23,7 +23,8 @@ export default function Popular() {
   const { data, isFetching, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<ResponseData>({
     queryKey: ['popular-movies'],
     queryFn: ({ pageParam = 1 }) => getPopularMovies(pageParam),
-    getNextPageParam: (lastPage) => (lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined)
+    getNextPageParam: (lastPage) =>
+      lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined
   });
 
   return (
@@ -41,6 +42,7 @@ export default function Popular() {
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 width={500}
                 height={700}
+                priority
                 alt={`${movie.title} poster`}
               />
             </Link>
