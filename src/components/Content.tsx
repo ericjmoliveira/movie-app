@@ -5,5 +5,5 @@ interface ContentProps {
 }
 
 export function Content({ children }: ContentProps) {
-  return <main>{children}</main>;
+  return <main className="m-4 md:m-8">{children}</main>;
 }
