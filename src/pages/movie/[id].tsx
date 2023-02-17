@@ -27,7 +27,7 @@ export default function Movie({ data }: MovieProps) {
       <h2 className="text-3xl text-center font-semibold">{`${data.title} (${new Date(
         data.release_date!
       ).getFullYear()})`}</h2>
-      <h4 className="text-base text-center font-semibold mb-8">
+      <h4 className="text-base text-center font-semibold mb-4">
         {`${data.production_companies[0].name} | ${data.genres[0].name} | ${Math.floor(
           data.runtime! / 60
         )}h ${data.runtime! % 60}m`}

@@ -48,9 +48,9 @@ export default function Search() {
   return (
     <>
       <Head>
-        <title>You searched for {query.split('-').join(' ')}</title>
+        <title>You searched for: {query.split('-').join(' ')}</title>
       </Head>
-      <h2 className="text-3xl text-center font-semibold mb-16">
+      <h2 className="text-3xl text-center font-semibold mb-14">
         You searched for: <span className="italic">{query.split('-').join(' ')}</span>
       </h2>
       {data?.pages[0].results.length! > 0 ? (
