@@ -34,7 +34,9 @@ export async function getTopRatedMovies(page: number = 1) {
 }
 
 export async function searchMovie(query: string, page: number = 1) {
-  const response = await tmdb.get(`/search/movie/?query=${query}&page=${page}&api_key=${TMDB_API_KEY}`);
+  const response = await tmdb.get(
+    `/search/movie?query=${query}&page=${page}&api_key=${TMDB_API_KEY}`
+  );
 
   return response.data;
 }
