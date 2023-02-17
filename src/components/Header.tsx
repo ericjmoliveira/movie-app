@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useRef, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 import { Navbar, TextInput } from 'flowbite-react';
 import { BsCameraReelsFill, BsSearch } from 'react-icons/bs';
@@ -12,16 +12,14 @@ const navLinks = [
 
 export function Header() {
   const router = useRouter();
-  const [query, setQuery] = useState(
-    router.pathname === '/search' ? String(router.query.query) : ''
-  );
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const searchMovie = (e: FormEvent) => {
     e.preventDefault();
 
-    if (!query.trim()) return;
+    if (!inputRef.current?.value.trim()) return;
 
-    router.push(`/search?query=${query.split(' ').join('-')}`);
+    router.push(`/search?query=${inputRef.current?.value.split(' ').join('-')}`);
   };
 
   return (
@@ -42,11 +40,10 @@ export function Header() {
         </Navbar.Brand>
         <form className="w-1/2 md:w-1/3 flex items-center" onSubmit={searchMovie}>
           <TextInput
+            ref={inputRef}
             className="w-full"
             type="text"
             addon={<BsSearch />}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
             placeholder="Search for a movie..."
             required={true}
           />

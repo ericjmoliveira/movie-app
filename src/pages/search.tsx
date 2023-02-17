@@ -48,7 +48,7 @@ export default function Search() {
   return (
     <>
       <Head>
-        <title>You searched for: {query.split('-').join(' ')}</title>
+        <title>Search</title>
       </Head>
       <h2 className="text-3xl text-center font-semibold mb-8">
         You searched for: <span className="italic">{query.split('-').join(' ')}</span>
