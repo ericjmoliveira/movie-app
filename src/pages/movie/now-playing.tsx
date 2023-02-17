@@ -32,7 +32,7 @@ export default function NowPlaying() {
       <Head>
         <title>Now Playing Movies</title>
       </Head>
-      <h2 className="text-3xl text-center font-semibold mb-8">Now Playing Movies</h2>
+      <h2 className="text-3xl text-center font-semibold mb-16">Now Playing Movies</h2>
       <section className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 mb-8">
         {data?.pages.map((page) =>
           page.results.map((movie) => (

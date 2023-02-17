@@ -47,7 +47,7 @@ export default function Movie({ data }: MovieProps) {
           </div>
           <div className="mb-4">
             <span className="text-lg text-center font-semibold mb-4">Overview</span>
-            <p className="text-base">{data.overview}</p>
+            <p>{data.overview}</p>
           </div>
           <div className="mb-4">
             <span className="text-lg text-center font-semibold mb-4">User Score</span>

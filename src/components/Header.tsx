@@ -3,7 +3,7 @@ import { Navbar } from 'flowbite-react';
 import { BsCameraReelsFill } from 'react-icons/bs';
 
 const navLinks = [
-  { path: '/movie/popular', description: 'Popular' },
+  { path: '/', description: 'Popular' },
   { path: '/movie/now-playing', description: 'Now Playing' },
   { path: '/movie/upcoming', description: 'Upcoming' },
   { path: '/movie/top-rated', description: 'Top Rated' }
@@ -24,7 +24,9 @@ export function Header() {
           }}
         >
           <BsCameraReelsFill className="text-xl text-white mr-2" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">MovieDB</span>
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            MovieDB
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
