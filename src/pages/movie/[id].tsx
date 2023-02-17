@@ -59,27 +59,37 @@ export default function Movie({ data }: MovieProps) {
           </div>
           <div className="mb-4">
             <span className="text-lg text-center font-semibold mb-4">Budget</span>
-            <p>
-              {Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
-                data.budget
-              )}
-            </p>
+            {data.budget ? (
+              <p>
+                {Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+                  data.budget
+                )}
+              </p>
+            ) : (
+              <p>Not informed</p>
+            )}
           </div>
           <div className="mb-4">
             <span className="text-lg text-center font-semibold mb-4">Revenue</span>
-            <p>
-              {Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
-                data.revenue
-              )}
-            </p>
+            {data.revenue ? (
+              <p>
+                {Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+                  data.revenue
+                )}
+              </p>
+            ) : (
+              <p>Not informed</p>
+            )}
           </div>
-          <div className="mb-4">
-            <p>
-              <a className="underline" href={data.homepage} target="_blank" rel="noreferrer">
-                Visit the movie homepage
-              </a>
-            </p>
-          </div>
+          {data.homepage && (
+            <div className="mb-4">
+              <p>
+                <a className="underline" href={data.homepage} target="_blank" rel="noreferrer">
+                  Visit the movie homepage
+                </a>
+              </p>
+            </div>
+          )}
         </section>
       </section>
     </>

@@ -1,6 +1,7 @@
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
-import { Navbar } from 'flowbite-react';
-import { BsCameraReelsFill } from 'react-icons/bs';
+import { Navbar, TextInput } from 'flowbite-react';
+import { BsCameraReelsFill, BsSearch } from 'react-icons/bs';
 
 const navLinks = [
   { path: '/', description: 'Popular' },
@@ -11,10 +12,21 @@ const navLinks = [
 
 export function Header() {
   const router = useRouter();
+  const [query, setQuery] = useState(
+    router.pathname === '/search' ? String(router.query.query) : ''
+  );
+
+  const searchMovie = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!query.trim()) return;
+
+    router.push(`/search?query=${query.split(' ').join('-')}`);
+  };
 
   return (
     <header>
-      <Navbar fluid={true} rounded={false}>
+      <Navbar fluid={false} rounded={false}>
         <Navbar.Brand
           href="/"
           onClick={(e) => {
@@ -28,6 +40,17 @@ export function Header() {
             MovieDB
           </span>
         </Navbar.Brand>
+        <form className="w-1/2 md:w-1/3 flex items-center" onSubmit={searchMovie}>
+          <TextInput
+            className="w-full"
+            type="text"
+            addon={<BsSearch />}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for a movie..."
+            required={true}
+          />
+        </form>
         <Navbar.Toggle />
         <Navbar.Collapse>
           {navLinks.map((link) => (
